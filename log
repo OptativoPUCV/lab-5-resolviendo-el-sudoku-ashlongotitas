@@ -10,3 +10,47 @@ Fri, May 16, 2025  7:02:19 PM:
  tests:  7|1
 total_score: 55/70
 ae7dfe5
+Fri, May 16, 2025  7:11:09 PM: 
+ sudoku.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'DFS':
+sudoku.c:145:3: error: implicit declaration of function 'pust' [-Werror=implicit-function-declaration]
+   pust(stack, initial);
+   ^~~~
+sudoku.c:148:10: error: implicit declaration of function 'isEmpty' [-Werror=implicit-function-declaration]
+   while(!isEmpty(stack))
+          ^~~~~~~
+sudoku.c:150:21: error: void value not ignored as it ought to be
+     Node* current = pop(stack),
+                     ^~~
+sudoku.c:151:12: error: expected '=', ',', ';', 'asm' or '__attribute__' before '++' token
+     (*cont)++;
+            ^~
+sudoku.c:157:5: error: unknown type name 'list'
+     list* adj = get_adj_nodes(current);
+     ^~~~
+sudoku.c:157:17: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
+     list* adj = get_adj_nodes(current);
+                 ^~~~~~~~~~~~~
+sudoku.c:158:28: error: passing argument 1 of 'first' from incompatible pointer type [-Werror=incompatible-pointer-types]
+     Node* adj_node = first(adj);
+                            ^~~
+In file included from test.c:4:0:
+list.h:16:7: note: expected 'List * {aka struct List *}' but argument is of type 'int *'
+ void* first(List* list);
+       ^~~~~
+In file included from test.c:5:0:
+sudoku.c:159:5: error: implicit declaration of function 'whiile' [-Werror=implicit-function-declaration]
+     whiile(adj_node != NULL)
+     ^~~~~~
+sudoku.c:160:5: error: expected ';' before '{' token
+     {
+     ^
+sudoku.c:165:10: error: 'ajd' undeclared (first use in this function)
+     free(ajd);
+          ^~~
+sudoku.c:165:10: note: each undeclared identifier is reported only once for each function it appears in
+cc1.exe: all warnings being treated as errors
+3491a07
