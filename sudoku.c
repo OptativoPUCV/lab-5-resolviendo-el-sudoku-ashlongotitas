@@ -43,15 +43,84 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
-
-    return 1;
+int is_valid(Node* n)
+{
+  for(int i = 0; i < 9; i++)
+  {
+    int fila[10] = {0};
+    for(int j = 0; j < 9; j++)
+    {
+      if(n->sudo[i][j] != 0)
+      {
+        if(fila[n->sudo[i][j]] == 1)
+        {
+          return 0;
+        }
+        fila[n->sudo[i][j]] = 1;
+      }
+    }
+  }
+  for(int j = 0; j < 9; j++)
+  {
+    int test[10] = {0};
+    for(int i = 0; i < 9; i++)
+    {
+      if(n->sudo[i][j] != 0)
+      {
+        if(test[n->sudo[i][j]] == 1)
+        {
+          return 0;
+        }
+        test[n->sudo[i][j]] = 1;
+      }
+    }
+  }
+  for (int block_row = 0; block_row < 3; block_row++)
+  {
+    for (int block_col = 0; block_col < 3; block_col++) 
+    {
+      int seen[10] = {0};
+      for (int i = 0; i < 3; i++) 
+      {
+        for (int j = 0; j < 3; j++) 
+        {
+          int num = n->sudo[3*block_row + i][3*block_col + j];
+          if (num != 0 && seen[num]++) return 0;
+        }
+      }
+    }
+  }
+  return 1;
 }
 
 
-List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+List* get_adj_nodes(Node* n)
+{
+  List* list=createList();
+  for(int i = 0; i < 9; i++)
+  {
+    for(int j = 0; j < 9; j++)
+    {
+      if(n->sudo[i][j] == 0)
+      {
+        for(int num = 1; num <= 9; num++)
+        {
+          Node* new = copy(n);
+          new->sudo[i][j] = num;
+          if(is_valid(new))
+          {
+            pushBack(list, new);
+          }
+          else
+          {
+            free(new);
+          }
+        }
+        return list;
+      }
+    }
+  }
+  return list;
 }
 
 
