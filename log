@@ -54,3 +54,13 @@ sudoku.c:165:10: error: 'ajd' undeclared (first use in this function)
 sudoku.c:165:10: note: each undeclared identifier is reported only once for each function it appears in
 cc1.exe: all warnings being treated as errors
 3491a07
+Fri, May 16, 2025  7:15:27 PM: 
+ sudoku.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'DFS':
+sudoku.c:150:21: error: void value not ignored as it ought to be
+     Node* current = pop(stack);
+                     ^~~
+fa475ea
